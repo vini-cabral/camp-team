@@ -1,0 +1,12 @@
+@use '../../styles/sass/_variables' as var
+@use '../../styles/sass/_mixins' as mix
+
+.footer
+  min-height: var.$footer-min-height
+  box-sizing: border-box
+  padding: var.$gutter
+  @include mix.flex()
+  @include mix.z-position()
+  text-align: center
+  a, cite
+    font-weight: 400

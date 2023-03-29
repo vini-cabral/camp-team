@@ -1,0 +1,27 @@
+@use '../../styles/sass/_variables' as var
+@use '../../styles/sass/_mixins' as mix
+
+.state--off, .state--on
+  @include mix.flex()
+  position: relative
+  cursor: pointer
+  width: var.$btn-icon-size
+  height: var.$btn-icon-size
+  > *
+    position: absolute
+    opacity: 0
+    transform: rotate(0deg)
+
+.state--off
+  > *:nth-child(1)
+    opacity: 0
+  > *:nth-child(2)
+    opacity: 1
+
+.state--on
+  > *:nth-child(1)
+    opacity: 1
+    transform: rotate(720deg)
+  > *:nth-child(2)
+    opacity: 0
+    transform: rotate(720deg)

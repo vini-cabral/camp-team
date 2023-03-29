@@ -1,0 +1,17 @@
+@use '../sass/_variables' as var
+@use '../sass/_mixins' as mix
+
+.main
+  @include mix.main()
+  max-width: var.$container-max-w
+  margin: 0 auto
+  section
+    box-sizing: border-box
+    padding: var.$offset
+    margin-top: var.$header-height
+    h1
+      --font-size: 3rem
+      font-size: var(--font-size)
+      --factor: 1.3
+      line-height: calc(var(--factor)*var(--font-size))
+      margin-bottom: .5rem

@@ -1,0 +1,42 @@
+@use '../../styles/sass/_variables' as var
+@use '../../styles/sass/_mixins' as mix
+
+@keyframes init
+  0%
+    top: calc(-1*var.$header-height)
+  100%
+    top: 0
+
+@mixin anime-init
+  animation-name: init
+  animation-duration: 400ms
+  animation-fill-mode: forwards
+
+.header
+  @include anime-init
+  @include mix.z-position(1, fixed)
+  width: 100%
+  left: 0
+  top: calc(-1*var.$header-height)
+  @include mix.flex()
+  &__container
+    max-width: var.$container-max-w
+    @include mix.flex()
+    position: relative
+    box-sizing: border-box
+    width: 100%
+    padding: 0 var.$offset
+    &__logo
+      @include mix.flex()
+      flex-direction: row
+      height: var.$header-height
+      padding: 0 var.$offset
+      align-self: flex-start
+      *
+        font-size: 2.8rem
+        font-weight: 700
+
+@media (min-width: var.$bkp-desk)
+  .header
+    &__container
+      flex-direction: row

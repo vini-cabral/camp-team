@@ -1,0 +1,10 @@
+@use '../sass/_variables' as var
+@use '../sass/_mixins' as mix
+
+.main
+  @include mix.main()
+  justify-content: center
+  section
+    box-sizing: border-box
+    padding: var.$offset
+    margin-top: var.$header-height

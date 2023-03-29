@@ -1,0 +1,47 @@
+@use './sass/_variables' as var
+@use './sass/_mixins' as mix
+
+html
+  font-size: 62.5%
+  font-family: var.$font-family
+
+body, button, input, textarea, p, a, strong, em, cite, q, blockquote
+  font-size: var.$font-size-std
+  line-height: calc(var.$font-size-std*var.$line-height-factor)
+  letter-spacing: var.$letter-spacing
+  font-weight: 300
+
+a
+  text-decoration: none
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 500
+
+h1
+  font-size: var.$font-size-h1
+  line-height: calc(var.$font-size-h1*var.$line-height-factor)
+
+h2
+  font-size: var.$font-size-h2
+  line-height: calc(var.$font-size-h2*var.$line-height-factor)
+
+h3
+  font-size: var.$font-size-h3
+  line-height: calc(var.$font-size-h3*var.$line-height-factor)
+
+h4
+  font-size: var.$font-size-h4
+  line-height: calc(var.$font-size-h4*var.$line-height-factor)
+
+h5
+  font-size: var.$font-size-h5
+  line-height: calc(var.$font-size-h5*var.$line-height-factor)
+
+h6
+  font-size: var.$font-size-h6
+  line-height: calc(var.$font-size-h6*var.$line-height-factor)
+
+.shadow
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75)
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75)
+  box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75)

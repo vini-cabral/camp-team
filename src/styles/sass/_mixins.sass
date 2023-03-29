@@ -1,0 +1,20 @@
+@use './_variables' as var
+
+@mixin flex($a-i: center, $j-c: center, $f-d: column)
+  display: flex
+  align-items: $a-i
+  justify-content: $j-c
+  flex-direction: $f-d
+
+@mixin z-position($z: 0, $p: relative)
+  z-index: $z
+  position: $p
+
+@mixin main()
+  @include flex()
+  @include z-position()
+  justify-content: flex-start
+  width: 100%
+  min-height: calc(101vh - var.$footer-min-height)
+  box-sizing: border-box
+  padding: var.$offset
