@@ -1,4 +1,3 @@
-import { lighten, shade } from "polished";
 import styled from "styled-components";
 
 export const StyledLi = styled.li.attrs(({ key }) => ({ key }))`
@@ -7,6 +6,6 @@ export const StyledLi = styled.li.attrs(({ key }) => ({ key }))`
     transition-property: color;
   }
   & a:hover {
-    color: ${({ theme }) => theme.stdColors.secondary}
+    color: ${({ theme }) => theme.stdColors.secondary};
   }
 `;

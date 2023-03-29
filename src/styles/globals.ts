@@ -1,22 +1,27 @@
 import { createGlobalStyle } from "styled-components";
-import { lighten, shade } from "polished";
+import { lighten } from "polished";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ hideBodyScrollbar: boolean }>`
   * {
     ::-webkit-scrollbar {
       height: 5px;
       width: 8px;
     }
     ::-webkit-scrollbar-thumb {
-      background: ${({ theme }) => lighten(.3, theme.stdColors.dark)};
+      background: ${({ theme }) => lighten(0.25, theme.stdColors.dark)};
       border-radius: 10px;
     }
     ::-webkit-scrollbar-track {
-      background: ${({ theme }) => lighten(.6, theme.stdColors.dark)};
+      background: ${({ theme }) => lighten(0.6, theme.stdColors.dark)};
     }
   }
   body, button, input, textarea, p, a, strong, em, cite, q, blockquote {
     color: ${({ theme }) => theme.colors.text01};
+  }
+  body {
+    ::-webkit-scrollbar {
+      width: ${({ hideBodyScrollbar }) => (hideBodyScrollbar ? "0px" : "8px")}
+    }
   }
   button {
     color: ${({ theme }) => theme.stdColors.light};
