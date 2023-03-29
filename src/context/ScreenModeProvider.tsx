@@ -11,24 +11,24 @@ import { ThemeProvider } from "styled-components";
 import { ScreenModeType } from "@/types";
 import { darkTheme, lightTheme } from "@/styles/themes";
 import PresetStyle from "@/styles/config/preset";
-import { PUB_SCREEN_MODE } from "@/env"
+import { PUB_SCREEN_MODE } from "@/env";
 
-const initState: ScreenModeType = PUB_SCREEN_MODE;
-
-export const ScreenModeContext = createContext<{
+const initState: {
   screenModeGob: ScreenModeType;
   handleScreenModeGob: () => void;
-}>({
-  screenModeGob: initState,
+} = {
+  screenModeGob: PUB_SCREEN_MODE,
   handleScreenModeGob: () => {},
-});
+};
+
+export const ScreenModeContext = createContext<typeof initState>(initState);
 
 export default function ScreenModeProvider({
   children,
 }: {
   children: ReactNode;
 }) {
-  const [screenMode, setScreenMode] = useState(initState);
+  const [screenMode, setScreenMode] = useState(initState.screenModeGob);
   const [hasTransition, setHasTransition] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
