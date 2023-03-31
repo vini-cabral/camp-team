@@ -54,4 +54,8 @@ export const PUB_APP_ROUTES: LinkType[] = [
     name: "Iníco",
     href: "/",
   },
+  {
+    name: "Usuários",
+    href: "/users",
+  },
 ];
