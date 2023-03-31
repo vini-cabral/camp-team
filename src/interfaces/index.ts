@@ -5,6 +5,20 @@ export interface UserInterface {
     first: string;
     last: string;
   };
+  location: {
+    street: {
+      number: number;
+      name: string;
+    };
+    city: string;
+    state: string;
+    country: string;
+    postcode: number;
+  };
+  email: string;
+  login: {
+    username: string;
+  };
   registered: {
     date: Date;
     age: number;
