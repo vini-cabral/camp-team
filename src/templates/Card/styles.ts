@@ -14,7 +14,11 @@ export const StyledCard = styled.div`
         ? lighten(0.05, theme.stdColors.dark)
         : lighten(0.05, theme.stdColors.light)};
   }
-  h3 {
-    color: ${({ theme }) => lighten(0.2, theme.stdColors.aux)};
+  h3,
+  & span {
+    color: ${({ theme }) =>
+      theme.name === "dark"
+        ? lighten(0.5, theme.stdColors.aux)
+        : shade(0.4, theme.stdColors.aux)};
   }
 `;

@@ -13,8 +13,14 @@ const Card = ({ user }: { user: UserInterface }) => {
 
   return (
     <StyledCard className={styles["card"]}>
-      {user.gender === "male" ? <FaMars /> : <FaVenus />}
-      <Image src={user.picture.thumbnail} alt={""} width={100} height={100} />
+      <span>{user.gender === "male" ? <FaMars /> : <FaVenus />}</span>
+      <Image
+        src={user.picture.large}
+        alt={""}
+        width={150}
+        height={150}
+        priority
+      />
       <h3>{`${user.name.first} ${user.name.last}`}</h3>
       <p>
         {new Intl.DateTimeFormat("pt-BR").format(
