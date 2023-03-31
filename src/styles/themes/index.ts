@@ -7,7 +7,7 @@ import { DefaultTheme } from "styled-components";
 // My Assets:
 import { StdColorsType } from "@/styles/config/styled";
 
-const stdColors: StdColorsType ={
+const stdColors: StdColorsType = {
   primary: "#1F3059",
   secondary: "#E72F48",
   aux: "#5B3566",
@@ -15,10 +15,11 @@ const stdColors: StdColorsType ={
   light: "#F5F5F5",
   danger: "#D71010",
   warning: "#D7AB10",
-  success: "#14AD11"
-}
+  success: "#14AD11",
+};
 
-const transitionDuration: DefaultTheme["transitionDuration"] = "300ms"; /** Refer to NOTE */
+const transitionDuration: DefaultTheme["transitionDuration"] =
+  "300ms"; /** Refer to NOTE */
 
 export const darkTheme: DefaultTheme = {
   name: "dark",
