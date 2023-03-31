@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import RiseLoader from "react-spinners/RiseLoader";
 // My Assets:
 import GlobalStyle from "@/styles/globals";
-import { Footer, Header } from "@/templates";
+import { Footer, Header, UsersModal } from "@/templates";
 import { BackgroundModal } from "@/components";
 import useAppContext from "@/hooks/useAppContext";
 
@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Footer />
       {showModalGob && (
         <BackgroundModal>
-          <h1>Modal</h1>
+          <UsersModal />
         </BackgroundModal>
       )}
       {isLoadingGob && (

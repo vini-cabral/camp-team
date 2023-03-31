@@ -9,43 +9,52 @@ import {
 import { UserInterface } from "@/interfaces";
 
 const initState: {
-  usersSectionIdGob: number;
-  handleUsersSectionIdGob: (id: number) => void;
-  usersSectionListGob: UserInterface[][];
-  handleUsersSectionListGob: (array: UserInterface[][]) => void;
+  usersPageNumGob: number;
+  handleUsersPageNumGob: (id: number) => void;
+  usersResultsListGob: UserInterface[][];
+  handleUsersResultsListGob: (array: UserInterface[][]) => void;
+  usersModalGob: UserInterface | null;
+  handleUsersModalGob: (value: UserInterface | null) => void;
 } = {
-  usersSectionIdGob: 1,
-  handleUsersSectionIdGob: () => {},
-  usersSectionListGob: [],
-  handleUsersSectionListGob: () => {},
+  usersPageNumGob: 1,
+  handleUsersPageNumGob: () => {},
+  usersResultsListGob: [],
+  handleUsersResultsListGob: () => {},
+  usersModalGob: null,
+  handleUsersModalGob: () => {},
 };
 
 export const UsersContext = createContext<typeof initState>(initState);
 
 export default function UsersProvider({ children }: { children: ReactNode }) {
-  const [usersSectionId, setUsersSectionId] = useState(
-    initState.usersSectionIdGob
+  const [usersPageNum, setUsersPageNum] = useState(initState.usersPageNumGob);
+  const [usersResultsList, setUsersResultsList] = useState(
+    initState.usersResultsListGob
   );
-  const [usersSectionList, setUsersSectionList] = useState(
-    initState.usersSectionListGob
-  );
+  const [usersModal, setUsersModal] = useState<UserInterface | null>(null);
   return (
     <UsersContext.Provider
       value={{
-        /** Users section id */
-        usersSectionIdGob: useMemo(() => usersSectionId, [usersSectionId]),
-        handleUsersSectionIdGob: useCallback(
-          (id: number) => setUsersSectionId(() => id),
+        /** Section id */
+        usersPageNumGob: useMemo(() => usersPageNum, [usersPageNum]),
+        handleUsersPageNumGob: useCallback(
+          (id: number) => setUsersPageNum(() => id),
           []
         ),
-        /** Users section list */
-        usersSectionListGob: useMemo(
-          () => usersSectionList,
-          [usersSectionList]
+        /** Section list */
+        usersResultsListGob: useMemo(
+          () => usersResultsList,
+          [usersResultsList]
         ),
-        handleUsersSectionListGob: useCallback((array: UserInterface[][]) => {
-          setUsersSectionList(() => array);
+        handleUsersResultsListGob: useCallback((array: UserInterface[][]) => {
+          setUsersResultsList(() => array);
         }, []),
+        /** Modal */
+        usersModalGob: useMemo(() => usersModal, [usersModal]),
+        handleUsersModalGob: useCallback(
+          (value: UserInterface | null) => setUsersModal(value),
+          []
+        ),
       }}
     >
       {children}

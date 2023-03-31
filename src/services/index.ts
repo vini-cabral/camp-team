@@ -10,11 +10,10 @@ async function getUsers(
   page = 1,
   nat = "foo",
   results = 3,
-  seed = "foobar",
-  inc = "gender,id,name,phone,picture,registered"
+  seed = "foobar"
 ): Promise<Page<UserInterface>> {
   const { data } = await axios.get<Page<UserInterface>>(
-    `?seed=${seed}&nat=${nat}&inc=${inc}&results=${results}&page=${page}`
+    `?seed=${seed}&nat=${nat}&results=${results}&page=${page}`
   );
   return data;
 }

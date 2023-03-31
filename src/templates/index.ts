@@ -1,5 +1,7 @@
+import Card from "./Card";
 import Footer from "./Footer";
 import Header from "./Header";
 import Navbar from "./Navbar";
+import UsersModal from "./UsersModal";
 
-export { Footer, Header, Navbar };
+export { Card, Footer, Header, Navbar, UsersModal };
