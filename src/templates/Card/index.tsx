@@ -6,17 +6,24 @@ import useAppContext from "@/hooks/useAppContext";
 import useUsersContext from "@/hooks/useUsersContext";
 import styles from "@/templates/Card/styles.module.sass";
 import { StyledCard } from "./styles";
+import { useCallback } from "react";
 
 const Card = ({ user }: { user: UserInterface }) => {
   const { handleShowModalGob } = useAppContext();
   const { handleUsersModalGob } = useUsersContext();
+
+  const handleInfo = useCallback(() => {
+    handleShowModalGob();
+    handleUsersModalGob(user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyledCard className={styles["card"]}>
       <span>{user.gender === "male" ? <FaMars /> : <FaVenus />}</span>
       <Image
         src={user.picture.large}
-        alt={""}
+        alt={user.name.first}
         width={150}
         height={150}
         priority
@@ -28,14 +35,7 @@ const Card = ({ user }: { user: UserInterface }) => {
         )}
       </p>
       <p>{user.phone}</p>
-      <button
-        onClick={() => {
-          handleShowModalGob();
-          handleUsersModalGob(user);
-        }}
-      >
-        View
-      </button>
+      <button onClick={handleInfo}>Detalhes</button>
     </StyledCard>
   );
 };

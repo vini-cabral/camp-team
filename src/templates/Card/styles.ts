@@ -15,7 +15,7 @@ export const StyledCard = styled.div`
         : lighten(0.05, theme.stdColors.light)};
   }
   h3,
-  & span {
+  & > span {
     color: ${({ theme }) =>
       theme.name === "dark"
         ? lighten(0.5, theme.stdColors.aux)
