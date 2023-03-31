@@ -18,7 +18,7 @@ export default function Home() {
       <main className={`${styles["main"]} ${googleFonts.className}`}>
         <section>
           <h1>Bem vindo ao Acampamento!</h1>
-          Clique no botão a seguir para conhecer o seu time!{" "}
+          <p>Para visualizar a lista de usuários clique no botão abaixo.</p>
           <button
             onClick={() =>
               router.push(
