@@ -1,17 +1,11 @@
 import React from "react";
 /** My Assets */
 import styles from "@/components/BackgroundModal/styles.module.sass";
-import useAppContext from "@/hooks/useAppContext";
 
 export default function BackgroundModal({
   children,
 }: {
   children?: React.ReactNode;
 }) {
-  const { handleHideModalGob } = useAppContext();
-  return (
-    <div onClick={handleHideModalGob} className={styles["back-ground-modal"]}>
-      {children}
-    </div>
-  );
+  return <div className={styles["back-ground-modal"]}>{children}</div>;
 }
