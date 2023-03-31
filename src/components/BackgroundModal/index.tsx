@@ -1,9 +1,9 @@
 import React from "react";
 /** My Assets */
-import styles from "@/components/BackGroundModal/styles.module.sass";
+import styles from "@/components/BackgroundModal/styles.module.sass";
 import useAppContext from "@/hooks/useAppContext";
 
-export default function BackGroundModal({
+export default function BackgroundModal({
   children,
 }: {
   children?: React.ReactNode;
