@@ -16,13 +16,19 @@ npm run dev
 
 ## Build
 
-### Passo 1 - Processo de build
+### Passo 1 - Baixe as dependências
+
+```bash
+npm i
+```
+
+### Passo 2 - Processo de build
 
 ```bash
 npm run build
 ```
 
-### Passo 2 - Execute em modo de Produção
+### Passo 3 - Execute em modo de Produção
 
 ```bash
 npm start
