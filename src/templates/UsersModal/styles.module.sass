@@ -1,0 +1,41 @@
+@use "../../styles/sass/_variables" as var
+@use "../../styles/sass/_mixins" as mix
+
+.user-info
+  box-sizing: border-box
+  width: 100%
+  height: 100%
+  padding: var.$gutter
+  overflow: auto
+  display: grid
+  gap: var.$offset
+  border-radius: .4rem
+  &__avatar
+    @include mix.flex()
+    img
+      border-radius: 100%
+    h3
+      margin-top: var.$offset
+      font-size: 3.2rem
+    h4
+      font-size: 2rem
+      margin-bottom: var.$offset
+  h5
+    font-weight: 700
+    margin: .2rem 0
+  p
+    font-weight: 300
+    font-size: 1.3rem
+    line-height: 1.4rem
+    strong
+      display: block
+      font-size: 2.2rem
+      padding: .1rem 0
+      margin-bottom: .6rem
+  &__container-btn
+    @include mix.flex()
+
+@media (min-width: var.$bkp-md)
+  .user-info
+    width: calc(.9*var.$bkp-md)
+    height: 80%
