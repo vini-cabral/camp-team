@@ -29,11 +29,7 @@ const Card = ({ user }: { user: UserInterface }) => {
         priority
       />
       <h3>{`${user.name.first} ${user.name.last}`}</h3>
-      <p>
-        {new Intl.DateTimeFormat("pt-BR").format(
-          new Date(user.registered.date)
-        )}
-      </p>
+      <p>{`${user.dob.age} ano${user.dob.age > 1 ? "s" : ""}`}</p>
       <p>{user.phone}</p>
       <button onClick={handleInfo}>Detalhes</button>
     </StyledCard>

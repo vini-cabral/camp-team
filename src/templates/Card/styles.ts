@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { lighten, shade } from "polished";
 
-export const StyledCard = styled.div`
+export const StyledCard = styled.div.attrs(({ className }) => ({
+  className,
+}))`
   & {
     border-color: ${({ theme }) =>
       theme.name === "dark"
