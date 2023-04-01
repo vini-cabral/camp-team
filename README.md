@@ -2,7 +2,7 @@
 
 ## Desenvolvimento
 
-### Passo 1 - Baixe as dependências:
+### Passo 1 - Baixe as dependências
 
 ```bash
 npm i
