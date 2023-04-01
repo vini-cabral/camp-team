@@ -11,29 +11,9 @@ export const PUB_GOOGLE_FONTS_UBUNTU = Ubuntu({
 /** Api Random User Generator: https://randomuser.me/ */
 export const PUB_RANDOMUSER_URL = "https://randomuser.me/api/1.4/";
 
-export const PUB_RANDOMUSER_NAT = [
-  "AU",
-  "BR",
-  "CA",
-  "CH",
-  "DE",
-  "DK",
-  "ES",
-  "FI",
-  "FR",
-  "GB",
-  "IE",
-  "IN",
-  "IR",
-  "MX",
-  "NL",
-  "NO",
-  "NZ",
-  "RS",
-  "TR",
-  "UA",
-  "US",
-];
+export const PUB_RANDOMUSER_RESULTS = 3;
+
+export const PUB_RANDOMUSER_MAX_PAGE = 4;
 
 /** App Screen Mode (Init) */
 export const PUB_SCREEN_MODE: ScreenModeType = "light";
