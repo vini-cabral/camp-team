@@ -1,9 +1,13 @@
 import Head from "next/head";
 import { useQuery } from "react-query";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 // My Assets:
 import styles from "@/styles/pages/Users.module.sass";
-import { PUB_GOOGLE_FONTS_UBUNTU as googleFonts } from "@/env";
+import {
+  PUB_RANDOMUSER_MAX_PAGE,
+  PUB_RANDOMUSER_RESULTS,
+  PUB_GOOGLE_FONTS_UBUNTU as googleFonts,
+} from "@/env";
 import { services } from "@/services";
 import useAppContext from "@/hooks/useAppContext";
 import useUsersContext from "@/hooks/useUsersContext";
@@ -22,7 +26,7 @@ export default function Users() {
   const [pageNum, setPageNum] = useState(usersPageNumGob);
 
   const { data, isError, isLoading } = useQuery(["user-list", pageNum], () =>
-    services.getUsers(pageNum, "br")
+    services.getUsers(pageNum, "br", PUB_RANDOMUSER_RESULTS)
   );
 
   useEffect(() => {
@@ -75,11 +79,13 @@ export default function Users() {
                   ))
                 )}
               </div>
-              <div className={`${styles["container-btn-load"]}`}>
-                <button className="init-card" onClick={handlePageNum}>
-                  Carregar mais...
-                </button>
-              </div>
+              {usersPageNumGob < PUB_RANDOMUSER_MAX_PAGE && (
+                <div className={`${styles["container-btn-load"]}`}>
+                  <button className="init-card" onClick={handlePageNum}>
+                    Carregar mais...
+                  </button>
+                </div>
+              )}
             </section>
           )}
       </main>
