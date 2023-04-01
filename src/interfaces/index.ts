@@ -5,6 +5,10 @@ export interface UserInterface {
     first: string;
     last: string;
   };
+  dob: {
+    age: number;
+    date: Date;
+  };
   location: {
     street: {
       number: number;
@@ -23,6 +27,7 @@ export interface UserInterface {
     date: Date;
     age: number;
   };
+  cell: string;
   phone: string;
   id: {
     name: string;
