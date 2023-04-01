@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useCallback, useMemo } from "react";
+import { IoClose } from "react-icons/io5";
 /** My Assets */
 import useAppContext from "@/hooks/useAppContext";
 import useUsersContext from "@/hooks/useUsersContext";
@@ -76,6 +77,11 @@ const UsersModal = () => {
     contactInfo &&
     address && (
       <StyledUserInfo className={`${styles["user-info"]} shadow`}>
+        <div className={styles["user-info__close"]}>
+          <button onClick={handleClose}>
+            <IoClose />
+          </button>
+        </div>
         <div className={styles["user-info__avatar"]}>
           <Image
             src={usersModalGob.picture.large}

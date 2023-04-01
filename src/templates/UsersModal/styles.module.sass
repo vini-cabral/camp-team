@@ -11,6 +11,17 @@
   gap: var.$offset
   border-radius: .4rem
   word-break: break-word
+  &__close
+    @include mix.flex()
+    width: 100%
+    button
+      @include mix.flex()
+      margin: 0
+      border: none
+      border-radius: 0.2rem
+      font-size: 2.1rem
+      padding: .4rem
+      align-self: flex-end
   &__avatar
     @include mix.flex()
     img
