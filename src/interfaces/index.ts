@@ -39,3 +39,7 @@ export interface UserInterface {
     thumbnail: string;
   };
 }
+
+export type UserInterfaceClient = Omit<UserInterface, "login"> & {
+  username: string;
+};

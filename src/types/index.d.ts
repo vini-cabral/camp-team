@@ -14,3 +14,5 @@ export type Page<T> = {
   };
   results: Array<T>;
 };
+
+export type PageClient<T> = { page: number; results: Array<T> };
