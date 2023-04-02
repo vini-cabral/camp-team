@@ -24,7 +24,7 @@ const UsersModal = () => {
           "Gênero",
           `${usersModalGob.gender === "female" ? "Feminino" : "Masculino"}`,
         ],
-        ["User", `${usersModalGob.login.username}`],
+        ["User", `${usersModalGob.username}`],
         ["CPF", `${usersModalGob.id.value}`],
         [
           "Data de nascimento",

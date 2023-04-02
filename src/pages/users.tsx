@@ -4,14 +4,15 @@ import { useCallback, useEffect, useState } from "react";
 // My Assets:
 import styles from "@/styles/pages/Users.module.sass";
 import {
-  PUB_RANDOMUSER_MAX_PAGE,
-  PUB_RANDOMUSER_RESULTS,
+  PUB_MAX_PAGE,
+  PUB_RESULTS,
   PUB_GOOGLE_FONTS_UBUNTU as googleFonts,
 } from "@/env";
-import { services } from "@/services";
+import { clientApi } from "@/services/client";
 import useAppContext from "@/hooks/useAppContext";
 import useUsersContext from "@/hooks/useUsersContext";
 import { Card } from "@/templates";
+import { FeedbackError } from "@/components";
 
 export default function Users() {
   const { handleIsLoadingGob } = useAppContext();
@@ -26,7 +27,7 @@ export default function Users() {
   const [pageNum, setPageNum] = useState(usersPageNumGob);
 
   const { data, isError, isLoading } = useQuery(["user-list", pageNum], () =>
-    services.getUsers(pageNum, "br", PUB_RANDOMUSER_RESULTS)
+    clientApi.getUsers(pageNum, "br", PUB_RESULTS)
   );
 
   useEffect(() => {
@@ -50,8 +51,10 @@ export default function Users() {
         className={`${styles["main"]} ${googleFonts.className}`}
         style={{ justifyContent: "center" }}
       >
-        <h1>Ops :( algo deu errado!</h1>
-        <p>Fique tranquilo nosso time foi notificado!</p>
+        <FeedbackError>
+          <h1>Ops :( algo deu errado!</h1>
+          <p>Fique tranquilo nosso time foi notificado!</p>
+        </FeedbackError>
       </main>
     );
   }
@@ -70,16 +73,18 @@ export default function Users() {
             <section>
               <h1>Lista de Usuários</h1>
               <div className={styles["results"]}>
-                {usersResultsListGob.map((results) =>
-                  results.map((user) => (
-                    <Card
-                      key={`name:${user.id.name}-value:${user.id.value}`}
-                      user={user}
-                    />
-                  ))
-                )}
+                {usersResultsListGob
+                  .filter((el) => Array.isArray(el) && el.length > 0)
+                  .map((results) =>
+                    results.map((user) => (
+                      <Card
+                        key={`name:${user.id.name}-value:${user.id.value}`}
+                        user={user}
+                      />
+                    ))
+                  )}
               </div>
-              {usersPageNumGob < PUB_RANDOMUSER_MAX_PAGE && (
+              {usersPageNumGob < PUB_MAX_PAGE && (
                 <div className={`${styles["container-btn-load"]}`}>
                   <button className="init-card" onClick={handlePageNum}>
                     Carregar mais...

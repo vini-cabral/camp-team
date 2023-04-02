@@ -6,15 +6,15 @@ import {
   useState,
 } from "react";
 /** My Assets */
-import { UserInterface } from "@/interfaces";
+import { UserInterfaceClient } from "@/interfaces";
 
 const initState: {
   usersPageNumGob: number;
   handleUsersPageNumGob: (id: number) => void;
-  usersResultsListGob: UserInterface[][];
-  handleUsersResultsListGob: (array: UserInterface[][]) => void;
-  usersModalGob: UserInterface | null;
-  handleUsersModalGob: (value: UserInterface | null) => void;
+  usersResultsListGob: UserInterfaceClient[][];
+  handleUsersResultsListGob: (array: UserInterfaceClient[][]) => void;
+  usersModalGob: UserInterfaceClient | null;
+  handleUsersModalGob: (value: UserInterfaceClient | null) => void;
 } = {
   usersPageNumGob: 1,
   handleUsersPageNumGob: () => {},
@@ -31,7 +31,9 @@ export default function UsersProvider({ children }: { children: ReactNode }) {
   const [usersResultsList, setUsersResultsList] = useState(
     initState.usersResultsListGob
   );
-  const [usersModal, setUsersModal] = useState<UserInterface | null>(null);
+  const [usersModal, setUsersModal] = useState<UserInterfaceClient | null>(
+    null
+  );
   return (
     <UsersContext.Provider
       value={{
@@ -46,13 +48,16 @@ export default function UsersProvider({ children }: { children: ReactNode }) {
           () => usersResultsList,
           [usersResultsList]
         ),
-        handleUsersResultsListGob: useCallback((array: UserInterface[][]) => {
-          setUsersResultsList(() => array);
-        }, []),
+        handleUsersResultsListGob: useCallback(
+          (array: UserInterfaceClient[][]) => {
+            setUsersResultsList(() => array);
+          },
+          []
+        ),
         /** Modal */
         usersModalGob: useMemo(() => usersModal, [usersModal]),
         handleUsersModalGob: useCallback(
-          (value: UserInterface | null) => setUsersModal(value),
+          (value: UserInterfaceClient | null) => setUsersModal(value),
           []
         ),
       }}

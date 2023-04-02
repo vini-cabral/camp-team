@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { FaMars, FaVenus } from "react-icons/fa";
 /** My Assets */
-import { UserInterface } from "@/interfaces";
+import { UserInterfaceClient } from "@/interfaces";
 import useAppContext from "@/hooks/useAppContext";
 import useUsersContext from "@/hooks/useUsersContext";
 import styles from "@/templates/Card/styles.module.sass";
 import { StyledCard } from "./styles";
 import { useCallback } from "react";
 
-const Card = ({ user }: { user: UserInterface }) => {
+const Card = ({ user }: { user: UserInterfaceClient }) => {
   const { handleShowModalGob } = useAppContext();
   const { handleUsersModalGob } = useUsersContext();
 
