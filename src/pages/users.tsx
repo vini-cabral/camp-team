@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useQuery } from "react-query";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 // My Assets:
 import styles from "@/styles/pages/Users.module.sass";
 import {
@@ -16,6 +16,10 @@ import { FeedbackError } from "@/components";
 
 export default function Users() {
   const [accepted, setAccepted] = useState<boolean | null>(null);
+
+  const [scrollTopValue, setScrollTopValue] = useState(0);
+
+  const galleryRef = useRef<HTMLInputElement>(null);
 
   const { handleIsLoadingGob } = useAppContext();
 
@@ -49,8 +53,28 @@ export default function Users() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isLoading]);
 
+  useEffect(() => {
+    if (isLoading || !scrollTopValue) {
+      return;
+    }
+    const id = setTimeout(() => {
+      window.scroll({
+        top: scrollTopValue,
+        behavior: "smooth",
+      });
+      setScrollTopValue(() => 0);
+    }, 300);
+    return () => clearTimeout(id);
+  }, [isLoading, scrollTopValue]);
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const handlePageNum = useCallback(() => setPageNum((prev) => prev + 1), []);
+  const handleClick = useCallback(() => {
+    setPageNum((prev) => prev + 1);
+    if (galleryRef.current) {
+      const galleryHeight = galleryRef.current.getBoundingClientRect().height;
+      setScrollTopValue(() => galleryHeight);
+    }
+  }, []);
 
   if ((accepted === false && !isLoading) || (isError && !isLoading)) {
     return (
@@ -78,23 +102,19 @@ export default function Users() {
         {accepted && (
           <section>
             <h1>Lista de Usuários</h1>
-            <div className={styles["results"]}>
-              {usersResultsListGob
-                .filter((el) => Array.isArray(el) && el.length > 0)
-                .map((results) =>
-                  results.map((user) => (
-                    <Card
-                      key={`name:${user.id.name}-value:${user.id.value}`}
-                      user={user}
-                    />
-                  ))
-                )}
+            <div className={styles["results"]} ref={galleryRef}>
+              {usersResultsListGob.map((results) =>
+                results.map((user) => (
+                  <Card
+                    key={`name:${user.id.name}-value:${user.id.value}`}
+                    user={user}
+                  />
+                ))
+              )}
             </div>
             {usersPageNumGob < PUB_MAX_PAGE && (
               <div className={`${styles["container-btn-load"]}`}>
-                <button className="init-card" onClick={handlePageNum}>
-                  Carregar mais...
-                </button>
+                <button onClick={handleClick}>Carregar mais...</button>
               </div>
             )}
           </section>
