@@ -29,7 +29,7 @@ export const PUB_LINK_REPO: LinkType = {
 
 export const PUB_APP_ROUTES: LinkType[] = [
   {
-    name: "Iníco",
+    name: "Início",
     href: "/",
   },
   {

@@ -53,7 +53,7 @@ export default function Users() {
       >
         <FeedbackError>
           <h1>Ops :( algo deu errado!</h1>
-          <p>Fique tranquilo nosso time foi notificado!</p>
+          <p>Fique tranquilo, nosso time foi notificado!</p>
         </FeedbackError>
       </main>
     );
