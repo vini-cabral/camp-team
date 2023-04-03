@@ -1,5 +1,7 @@
 # Camp Team
 
+Visite o projeto: [https://camp-team.vercel.app/](https://camp-team.vercel.app/)
+
 ## Setup
 
 Antes de iniciar o projeto localmente, renomeie (ou copie) o arquivo `.env.example` para `.env.local`.  
