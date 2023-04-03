@@ -3,7 +3,7 @@ import RiseLoader from "react-spinners/RiseLoader";
 // My Assets:
 import GlobalStyle from "@/styles/globals";
 import { Footer, Header, UsersModal } from "@/templates";
-import { BackgroundModal } from "@/components";
+import { BackgroundModal, BtnScrollUp } from "@/components";
 import useAppContext from "@/hooks/useAppContext";
 
 const Layout = ({ children }: { children: ReactNode }) => {
@@ -14,6 +14,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Header />
       {children}
       <Footer />
+      <BtnScrollUp />
       {showModalGob && (
         <BackgroundModal>
           <UsersModal />
